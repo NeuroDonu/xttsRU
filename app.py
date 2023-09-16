@@ -1,6 +1,7 @@
 import gradio as gr
 from TTS.api import TTS
 
+share=True
 tts = TTS("tts_models/multilingual/multi-dataset/xtts_v1")
 tts.to("cuda")
 
