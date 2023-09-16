@@ -11,3 +11,5 @@ models:
 ---
 
 Оффициальный проект и его доки: https://huggingface.co/docs/hub/spaces-config-reference
+
+Это версия ТОЛЬКО для Google Colab. 
