@@ -1,6 +1,7 @@
 import gradio as gr
 from TTS.api import TTS
 
+
 tts = TTS("tts_models/multilingual/multi-dataset/xtts_v1")
 tts.to("cuda")
 
@@ -20,7 +21,7 @@ def predict(prompt, language, audio_file_pth, agree):
             "output.wav",
         )
     else:
-        return gr.Warning("Пожалуйста, прими нашу политику!")
+        gr.Warning("Пожалуйста примите наши правила использования!")
 
 title = "XTTS RU by NeuroDonu"
 
@@ -36,14 +37,8 @@ article = """
 
 examples = [
     [
-        "Один раз я пошла в лес за грибами.",
+        "Один раз я пошел в лес за грибами.",
         "ru",
-        "examples/female.wav",
-        True,
-    ],
-    [
-        "In one day, I have eaten mushrooms.",
-        "en",
         "examples/male.wav",
         True,
     ],
@@ -82,7 +77,7 @@ gr.Interface(
             label="Эталонное аудио",
             info="Нажмите кнопку ✎, чтобы загрузить собственный звук диктора.",
             type="file",
-            value="examples/male.wav",
+            value="examples/female.wav",
         ),
         gr.Checkbox(
             label="Согласен",
