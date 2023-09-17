@@ -1,10 +1,8 @@
 import gradio as gr
 from TTS.api import TTS
 
-gr.launch(share=True)
 tts = TTS("tts_models/multilingual/multi-dataset/xtts_v1")
 tts.to("cuda")
-
 
 def predict(prompt, language, audio_file_pth, agree):
     if agree == True:
@@ -24,28 +22,27 @@ def predict(prompt, language, audio_file_pth, agree):
     else:
         return gr.Warning("Пожалуйста, прими нашу политику!")
 
-
 title = "XTTS RU by NeuroDonu"
 
 description = """
-Полная документация проекта на <a href="https://huggingface.co/coqui/XTTS-v1">HuggingFace</a>
+Полная документация проекта на <a href='https://huggingface.co/coqui/XTTS-v1'>HuggingFace</a>
 """
 
 article = """
 <div style='margin:20px auto;'>
-<p>Используя эту программу, вы автоматически соглашаетьсь с <a href=https://coqui.ai/cpml>нашей политикой</a></p>
+<p>Используя эту программу, вы автоматически соглашаетесь с <a href='https://coqui.ai/cpml'>нашей политикой</a></p>
 </div>
 """
 
 examples = [
     [
-        "Один раз я пошла в лез за грибами.",
+        "Один раз я пошла в лес за грибами.",
         "ru",
         "examples/female.wav",
         True,
     ],
     [
-        "In one day i have eat mushrooms.",
+        "In one day, I have eaten mushrooms.",
         "en",
         "examples/male.wav",
         True,
@@ -83,14 +80,14 @@ gr.Interface(
         ),
         gr.Audio(
             label="Эталонное аудио",
-            info="Нажмите кнопку ✎, чтобы загрузить собственный звук целевого динамика.",
-            type="filepath",
+            info="Нажмите кнопку ✎, чтобы загрузить собственный звук диктора.",
+            type="file",
             value="examples/male.wav",
         ),
         gr.Checkbox(
             label="Согласен",
             value=True,
-            info="Я согласен с условиями лицензии публичной модели Coqui на странице https://coqui.ai/cpml",
+            info="Я согласен с условиями лицензии публичной модели Coqui на странице <a href='https://coqui.ai/cpml'>https://coqui.ai/cpml</a>",
         ),
     ],
     outputs=[
@@ -101,4 +98,4 @@ gr.Interface(
     description=description,
     article=article,
     examples=examples,
-).queue().launch(debug=True)
+).launch(share=True)
