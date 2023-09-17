@@ -1,7 +1,7 @@
 import gradio as gr
 from TTS.api import TTS
 
-demo.launch(share=True)
+gr.launch(share=True)
 tts = TTS("tts_models/multilingual/multi-dataset/xtts_v1")
 tts.to("cuda")
 
@@ -22,18 +22,18 @@ def predict(prompt, language, audio_file_pth, agree):
             "output.wav",
         )
     else:
-        gr.Warning("Пожалуйста, прими нашу политику!")
+        return gr.Warning("Пожалуйста, прими нашу политику!")
 
 
 title = "XTTS RU by NeuroDonu"
 
 description = """
-Полная документация проекта на <a href https://huggingface.co/coqui/XTTS-v1>HuggingFace</a>
+Полная документация проекта на <a href="https://huggingface.co/coqui/XTTS-v1">HuggingFace</a>
 """
 
 article = """
 <div style='margin:20px auto;'>
-<p>Используя эту программу, вы автоматически соглашаетьсь с <a href https://coqui.ai/cpml>нашей политикой</a></p>
+<p>Используя эту программу, вы автоматически соглашаетьсь с <a href=https://coqui.ai/cpml>нашей политикой</a></p>
 </div>
 """
 
